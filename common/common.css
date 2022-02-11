@@ -1,0 +1,14 @@
+/* 主色调 */
+/* 主背景颜色 */
+.bg-main {
+  background-color: #5ACB84;
+}
+/* 主文字色 */
+.text-main {
+  color: #5ACB84;
+}
+/* 分割线 */
+.divider {
+  height: 15rpx;
+  background-color: #f5f5f3;
+}

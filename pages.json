@@ -1,0 +1,57 @@
+{
+  "pages": [{
+    "path": "pages/tabbar/index/index",
+    "style": {
+      "app-plus":{
+        "titleNView": false
+      }
+    }
+  }, {
+    "path": "pages/tabbar/learn/learn",
+    "style": {
+      "navigationBarTitleText": "",
+      "enablePullDownRefresh": false
+    }
+
+  }, {
+    "path": "pages/tabbar/my/my",
+    "style": {
+      "navigationBarTitleText": "",
+      "enablePullDownRefresh": false
+    }
+
+  }],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app在线教育",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8",
+    "app-plus": {
+      "background": "#efeff4"
+    }
+  },
+  "tabBar": {
+    "color": "#8a8a8a",
+    "selectedColor": "#5ACB84",
+    "borderStyle": "black",
+    "list": [{
+        "iconPath": "static/tabbar/index.png",
+        "selectedIconPath": "static/tabbar/index-selected.png",
+        "pagePath": "pages/tabbar/index/index",
+        "text": "首页"
+      },
+      {
+        "iconPath": "static/tabbar/study.png",
+        "selectedIconPath": "static/tabbar/study-selected.png",
+        "pagePath": "pages/tabbar/learn/learn",
+        "text": "学习"
+      },
+      {
+        "iconPath": "static/tabbar/my.png",
+        "selectedIconPath": "static/tabbar/my-selected.png",
+        "pagePath": "pages/tabbar/my/my",
+        "text": "我的"
+      }
+    ]
+  }
+}
