@@ -8,5 +8,9 @@ export default {
   // 注册账号
    reg(data={}) {
      return http.post('/register', data)
+   },
+   // 账号登录
+   login(data={}) {
+     return http.post('/login', data)
    }
 }

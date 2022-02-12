@@ -74,16 +74,27 @@
         }
       },
       async submit() {
+        let data = {...this.formData}
+        let res = null
         // 注册请求
-        if(this.type == 'reg'){
-          let data = {...this.formData}
-          let res = await this.$api.reg(data)
-          console.log(res);
-          this.$toast('注册成功！')
-          this.resetForm()
-          this.changeType()
+        if(this.type == 'reg'){          
+          res = await this.$api.reg(data)
           
+          this.$toast('注册成功！')
+          
+          this.changeType()
+        }else {
+          // 登录请求
+          res = await this.$api.login(data)
+          this.$toast('登录成功！')
+          this.$store.commit('user/updateUser', res.data)
+          this.$store.commit('user/updateToken', res.data.token)
+          setTimeout(()=>{
+            this.back()
+          }, 500)
         }
+        // console.log(res);
+        this.resetForm()
       }
     }
   }
