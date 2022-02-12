@@ -3,6 +3,8 @@
 .bg-main {
   background-color: #5ACB84;
 }
+.bg-main-hover {background-color: #4bc175;}
+.bg-main-disabled {background-color: #7be09f;}
 /* 主文字色 */
 .text-main {
   color: #5ACB84;
