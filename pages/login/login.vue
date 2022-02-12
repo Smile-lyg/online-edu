@@ -26,7 +26,7 @@
       
       <view class="flex align-center justify-between my-2">
         <text class="py-3 text-main" @tap="changeType">{{ type == 'login'?'注册账号' : '去登录'}}</text>
-        <text class="py-3 text-muted" >忘记密码？</text>
+        <text class="py-3 text-muted" @tap="openForget">忘记密码？</text>
       </view>
       <!-- 微信登录 -->
       <view v-if="type=='login'" class="flex justify-center align-center wechat-login">
@@ -62,6 +62,11 @@
       back() {
         uni.navigateBack({
           delta: 1
+        })
+      },
+      openForget(){
+        uni.navigateTo({
+          url:"./forget-psw/forget-psw"
         })
       },
       // 改变页面类型
@@ -102,7 +107,7 @@
           this.$toast('登录成功！')
           this.$store.commit('user/updateUser', res.data)
           this.$store.commit('user/updateToken', res.data.token)
-          // 如果手机号为null
+          // 如果手机号为null，跳转绑定手机页面
           if(!res.data.phone){
             uni.redirectTo({
               url: './bind-phone/bind-phone'
