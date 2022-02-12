@@ -1,9 +1,10 @@
+import store from '@/store/index.js'
 export default {
   config: {
     // 请求根路径
     baseUrl: "https://www.fastmock.site/mock/12a3b588e4cb21b5706eed87c8d3e181/api",
     // 请求头
-    header: {token: "abc"},
+    header: {token: store.state.user.token},
     // 请求拦截器
     beforeRequest(options = {}) {
       uni.showLoading({

@@ -8,14 +8,23 @@
   let timer = null
   export default {
     name:"code-btn",
+    props: {
+      phone: {
+        type: [Number, String],
+        default: ''
+      },
+    },
     data() {
       return {
         time: 0
       };
-    },methods: {
-      sentCode() {
+    },
+    methods: {
+      async sentCode() {
         if(this.time > 0) return
-        this.time = 10
+        let res = await this.$api.getCaptcha({phone: this.phone})
+        this.$toast('验证码'+res.data)
+        this.time = 60
         timer = setInterval(()=>{
           this.time --
           if(this.time<=0){

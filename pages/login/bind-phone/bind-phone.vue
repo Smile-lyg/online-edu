@@ -15,7 +15,8 @@
       <view class="login-form">
         <uni-icons type="email" size="20" color=""></uni-icons>
         <input type="text" value="" placeholder="验证码" class="round" v-model="formData.code"/>
-        <code-btn></code-btn>
+        <!-- 发送验证码按钮 -->
+        <code-btn :phone="formData.phone"></code-btn>
       </view>
       
       
@@ -33,7 +34,11 @@
           phone: '',
           code: ''
         },
+        uinfo: {}
       }
+    },
+    created() {
+        this.uinfo = this.$store.state.user.userInfo
     },
     methods: {
       // 返回上页
@@ -49,8 +54,16 @@
         let data = {...this.formData}
         let res = null
         // 绑定手机请求
-
+        res = await this.$api.bindPhone(data)
         console.log(res);
+        this.$toast('绑定成功')
+        // 绑定成功后更新用户信息
+        this.uinfo.phone = data.phone
+        this.$store.commit('user/updateUser', this.uinfo)
+        
+        setTimeout(()=>{
+          this.back()
+        }, 350) 
 
       }
     }
