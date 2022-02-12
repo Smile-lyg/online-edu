@@ -58,11 +58,13 @@
       }
     },
     methods: {
+      // 返回上页
       back() {
         uni.navigateBack({
           delta: 1
         })
       },
+      // 改变页面类型
       changeType() {
         this.type = this.type == 'login' ? 'reg' : 'login'
       },
@@ -74,11 +76,13 @@
           repassword: ''
         }
       },
+      // 勾选已阅读协议复选框监听
       handleCBChange(e){
         // 0->false 1->true
         // console.log(!!e.detail.value.length);
         this.confirm = !!e.detail.value.length
       },
+      // 登录注册按钮提交
       async submit() {
         if(!this.confirm && this.type == 'login'){
           return this.$toast('请先阅读并同意用户协议隐私声明')
@@ -98,9 +102,16 @@
           this.$toast('登录成功！')
           this.$store.commit('user/updateUser', res.data)
           this.$store.commit('user/updateToken', res.data.token)
+          // 如果手机号为null
+          if(!res.data.phone){
+            uni.redirectTo({
+              url: './bind-phone/bind-phone'
+            })
+            return
+          }
           setTimeout(()=>{
             this.back()
-          }, 500)
+          }, 350)
         }
         // console.log(res);
         this.resetForm()
@@ -110,79 +121,6 @@
 </script>
 
 <style lang="scss">
-  .login-bg {
-    height: 220rpx;
-    background-image: linear-gradient(120deg, #3bfdaf 0%, #70d6f2 100%);
-    position: relative;
-  }
 
-  .login-back {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 120rpx;
-    height: 120rpx;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 100;
-  }
-
-  .login-box {
-    position: relative;
-    top: -20rpx;
-    padding: 60rpx 70rpx 0 70rpx;
-    background-color: #fff;
-    border-top-left-radius: 30rpx;
-    border-top-right-radius: 30rpx;
-
-    .title {
-      font-size: 44rpx;
-      margin-bottom: 50rpx;
-      color: #35404b;
-    }
-    .btn {
-      height: 100rpx;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #FFFFFF;
-      border-radius: 10rpx;
-      font-size: 40rpx;
-    }
-    .wechat-login {
-      .uni-icons {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border: 1rpx solid #5ccc84;
-        width: 94rpx;
-        height: 94rpx;
-        border-radius: 100%;
-      }
-    }
-  }
-
-  .login-form {
-    position: relative;
-    margin-bottom: 50rpx;
-    .uni-icons {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100rpx;
-      height: 100rpx;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #272727;
-    }
-    input {
-      height: 100rpx;
-      padding-left: 100rpx;
-      padding-right: 20rpx;
-      background-color: #f5f5f5;
-    }
-  }
   
 </style>
