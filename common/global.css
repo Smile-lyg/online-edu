@@ -25,6 +25,7 @@
 .p-2 {
   padding: 20rpx;
 }
+.m-2 {margin: 20rpx;}
 /* 上下边距 */
 .py-0 {padding-top: 6rpx; padding-bottom: 6rpx;}
 .py-1 {padding-top: 10rpx; padding-bottom: 10rpx;}
@@ -40,9 +41,8 @@
 .mr-3 {margin-right: 30rpx;}
 
 /* 圆角 */
-.round {
-  border-radius: 10rpx;
-}
+.round {border-radius: 10rpx;}
+.round-circle {border-radius: 100%;}
 /* 背景颜色 */
 .bg-wraning { background-color: #FFB900}
 .bg-hover-wraning { background-color: #EA9700}

@@ -1,13 +1,17 @@
 <template>
 	<view class="container">
+    
     <!-- 搜索栏 -->
 		<my-search-bar></my-search-bar>
     <!-- 轮播图 -->
-    <swiper :indicator-dots="true" :autoplay="true" :interval="5000" :duration="1000" indicator-color="#fff" indicator-active-color="#5ACB84" circular class="my-swiper px-2">
+    <swiper :indicator-dots="true" :autoplay="true" :interval="5000" :duration="1000" indicator-color="#fff" indicator-active-color="#5ACB84" circular class="my-swiper px-2 animate__animated animate__fadeIn" v-if="this.swiper.length != 0">
       <swiper-item class="flex justify-center round" v-for="(item, index) in swiper" :key="index">
         <image :src="item.src" mode="aspectFill" class="round" ></image>
       </swiper-item>
     </swiper>
+    
+    <skeleton v-else width="710rpx" height="330rpx" oClass="mx-2 round"></skeleton>
+    
     <!-- 图标菜单 -->
     <icon-nav :list="iconNav"></icon-nav>
     <!-- 横向滚动优惠券 -->
@@ -44,11 +48,7 @@
 	export default {
 		data() {
 			return {
-				swiper: [{
-          src:'/static/banner/b1.jpg'
-        },{
-          src:'/static/banner/b2.jpg'
-        }],
+				swiper: [],
         iconNav: [{
           name: "活动",
           src: "/static/uni.png"
@@ -102,7 +102,14 @@
 			}
 		},
     created() {
-      this.getData()
+      // this.getData()
+      setTimeout(() => {
+        this.swiper = [{
+          src:'/static/banner/b1.jpg'
+        },{
+          src:'/static/banner/b2.jpg'
+        }]
+      }, 3000)
     },
 		methods: {
        getData(){
