@@ -16,26 +16,25 @@
     <icon-nav :list="iconNav"></icon-nav>
     <!-- 横向滚动优惠券 -->
     <coupon-list></coupon-list>
-    <!-- 拼团列表 -->
     
     <!-- 分割线 -->
     <view class="divider"></view>
     <view class="px-2 py-3"><text class="font-md font-weight-bold">拼团</text></view>
-  
+  <!-- 拼团列表 -->
     <scroll-view scroll-x="true" class="scroll-row">
-        <course-list v-for="(item, index) in groupList" :key="index" :item="item"></course-list>
+        <course-list></course-list>
     </scroll-view>
     
-    <!-- 课程列表 -->
+    
     <!-- 分割线 -->
     <view class="divider"></view>
     <view class="px-2 py-3 flex justify-between">
       <text class="font-md font-weight-bold">最新课程</text>
       <text class="font-sm text-muted">查看更多</text>
     </view>
-    <view>
-        <course-list  v-for="(item, index) in groupList" :key="index" :item="item" types="one"></course-list>
-    </view>
+<!-- 课程列表 -->
+        <course-list types="one"></course-list>
+
     <!-- 广告区 -->
     <view class="divider"></view>
     <view class="p-2">
@@ -74,31 +73,7 @@
           name: "活动",
           src: "/static/uni.png"
         }],
-        groupList:[{
-          id: 10,
-          goods_id: 12,
-          title: "uni-app实战直播app开发",
-          cover: "/static/banner/b1.jpg",
-          price: "299.00",
-          t_price: "100.00",
-          type: "media"
-        },{
-          id: 11,
-          goods_id: 13,
-          title: "uni-app实战1",
-          cover: "/static/banner/b2.jpg",
-          price: "599.00",
-          t_price: "99.00",
-          type: "video"
-        },{
-          id: 12,
-          goods_id: 14,
-          title: "uni-app实战2",
-          cover: "/static/banner/b2.jpg",
-          price: "599.00",
-          t_price: "99.00",
-          type: "audio"
-        }]
+        
 			}
 		},
     created() {
@@ -109,7 +84,7 @@
         },{
           src:'/static/banner/b2.jpg'
         }]
-      }, 3000)
+      }, 2000)
     },
 		methods: {
        getData(){

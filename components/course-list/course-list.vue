@@ -1,22 +1,26 @@
 <template>
-  <view class="scroll-row-item course" :class="'course-'+this.types">
-    
-    <view class="position-relative imgbox">
-      <image :src="item.cover" mode=""></image>
-      <view class="text-white font-sm">{{item.type | formatType}}</view>
-    </view>
-    
-    <view class="flex flex-column flex-shrink-0 font-md">
-      <text class="text-ellipsis course-title">{{item.title}}</text>
-      <view class="font-sm text-muted py-1">10人已抢</view>
-      <view class="flex align-end">
-        <text class=" text-danger">￥{{item.t_price}}</text>
-        <text class="font-sm text-muted" style="text-decoration: line-through; line-height: 40rpx;">
-          ￥{{item.price}}
-        </text>
+  <view >
+    <view v-for="(item, index) in groupList" :key="index" class="scroll-row-item course" :class="'course-'+types">
+      <view class="position-relative imgbox">
+        <image :src="item.cover" mode=""></image>
+        <view class="text-white font-sm">{{item.type | formatType}}</view>
       </view>
+      
+      <view class="flex flex-column flex-shrink-0 font-md">
+        <text class="text-ellipsis course-title">{{item.title}}</text>
+        <view class="font-sm text-muted py-1">10人已抢</view>
+        <view class="flex align-end">
+          <text class=" text-danger">￥{{item.t_price}}</text>
+          <text class="font-sm text-muted" style="text-decoration: line-through; line-height: 40rpx;">
+            ￥{{item.price}}
+          </text>
+        </view>
+      </view>
+      
     </view>
+    
   </view>
+  
 </template>
 
 <script>
@@ -28,7 +32,7 @@
   export default {
     name:"course-list",
     props: {
-      item: Object,
+      // item: Object,
       types: {
         type: String,
         default: "two"
@@ -41,8 +45,32 @@
     },
     data() {
       return {
-        
-      };
+        groupList:[{
+          id: 10,
+          goods_id: 12,
+          title: "uni-app实战直播app开发",
+          cover: "/static/banner/b1.jpg",
+          price: "299.00",
+          t_price: "100.00",
+          type: "media"
+        },{
+          id: 11,
+          goods_id: 13,
+          title: "uni-app实战1",
+          cover: "/static/banner/b2.jpg",
+          price: "599.00",
+          t_price: "99.00",
+          type: "video"
+        },{
+          id: 12,
+          goods_id: 14,
+          title: "uni-app实战2",
+          cover: "/static/banner/b2.jpg",
+          price: "599.00",
+          t_price: "99.00",
+          type: "audio"
+        }]
+      }
     }
   }
 </script>
