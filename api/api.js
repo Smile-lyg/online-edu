@@ -20,5 +20,9 @@ export default {
    // 绑定手机号
    bindPhone(data={}) {
      return http.post('/bind_phone', data)
-   }
+   },
+   // 找回密码
+   getForgetPsw(data={}) {
+     return http.post('/forget', data)
+   },
 }

@@ -63,14 +63,13 @@
         let data = {...this.formData}
         let res = null
         // 绑定手机请求
-        // res = await this.$api.bindPhone(data)
+        res = await this.$api.getForgetPsw(data)
         console.log(res);
-        // this.$toast('绑定成功')
-
+        this.$toast('密码修改成功')
         
-        // setTimeout(()=>{
-        //   this.back()
-        // }, 350) 
+        setTimeout(()=>{
+          this.back()
+        }, 350) 
 
       }
     }
