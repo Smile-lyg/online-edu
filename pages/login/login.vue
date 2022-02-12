@@ -29,14 +29,14 @@
         <text class="py-3 text-muted" >忘记密码？</text>
       </view>
       <!-- 微信登录 -->
-      <view class="flex justify-center align-center wechat-login">
+      <view v-if="type=='login'" class="flex justify-center align-center wechat-login">
         <uni-icons type="weixin" size="30" color="#5ccc84"></uni-icons>
       </view>
      
      <!-- 同意协议 -->
-     <checkbox-group name="" class="flex justify-center align-center mt-4">
+     <checkbox-group v-if="type=='login'" name="" class="flex justify-center align-center mt-4" @change="handleCBChange">
        <label class="text-muted flex align-center">
-         <checkbox color="#5ccc84" style="transform: scale(0.7);" value="" /><text>已阅读并同意用户协议隐私声明</text>
+         <checkbox color="#5ccc84" style="transform: scale(0.7);" value="1" /><text>已阅读并同意用户协议隐私声明</text>
        </label>
      </checkbox-group>
      
@@ -53,7 +53,8 @@
           username: '',
           password: '',
           repassword: ''
-        }
+        },
+        confirm: false,
       }
     },
     methods: {
@@ -73,7 +74,15 @@
           repassword: ''
         }
       },
+      handleCBChange(e){
+        // 0->false 1->true
+        // console.log(!!e.detail.value.length);
+        this.confirm = !!e.detail.value.length
+      },
       async submit() {
+        if(!this.confirm && this.type == 'login'){
+          return this.$toast('请先阅读并同意用户协议隐私声明')
+        }
         let data = {...this.formData}
         let res = null
         // 注册请求
