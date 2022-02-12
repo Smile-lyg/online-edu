@@ -10,19 +10,19 @@
       <view class="title"><text class="">{{ type == 'login'?'登录' : '注册'}}</text></view>
       <view class="login-form">
         <uni-icons type="person" size="20" color=""></uni-icons>
-        <input type="text" value="" placeholder="请输入用户名" class="round" />
+        <input type="text" value="" placeholder="请输入用户名" class="round" v-model="formData.username" />
       </view>
       <view class="login-form">
         <uni-icons type="locked" size="20" color=""></uni-icons>
-        <input type="text" value="" placeholder="请输入密码" class="round" />
+        <input type="text" value="" placeholder="请输入密码" class="round" v-model="formData.password"/>
       </view>
       
-      <view class="login-form" v-if="type!='login'">
+      <view class="login-form" v-if="type==='reg'">
         <uni-icons type="locked" size="20" color=""></uni-icons>
-        <input type="text" value="" placeholder="请输入确认密码" class="round" />
+        <input type="text" value="" placeholder="请输入确认密码" class="round" v-model="formData.repassword"/>
       </view>
       
-      <view class="bg-main btn" hover-class="bg-main-hover">{{ type == 'login'?'登录' : '注册'}}</view>
+      <view class="bg-main btn" hover-class="bg-main-hover" @tap="submit">{{ type == 'login'?'登录' : '注册'}}</view>
       
       <view class="flex align-center justify-between my-2">
         <text class="py-3 text-main" @tap="changeType">{{ type == 'login'?'注册账号' : '去登录'}}</text>
@@ -48,7 +48,12 @@
   export default {
     data() {
       return {
-        type: 'login'
+        type: 'login',
+        formData: {
+          username: '',
+          password: '',
+          repassword: ''
+        }
       }
     },
     methods: {
@@ -59,6 +64,26 @@
       },
       changeType() {
         this.type = this.type == 'login' ? 'reg' : 'login'
+      },
+      // 重置表单数据
+      resetForm(){
+        this.formData = {
+          username: '',
+          password: '',
+          repassword: ''
+        }
+      },
+      async submit() {
+        // 注册请求
+        if(this.type == 'reg'){
+          let data = {...this.formData}
+          let res = await this.$api.reg(data)
+          console.log(res);
+          this.$toast('注册成功！')
+          this.resetForm()
+          this.changeType()
+          
+        }
       }
     }
   }

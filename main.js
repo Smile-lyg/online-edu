@@ -6,6 +6,13 @@ import api from '@/api/api.js'
 
 Vue.prototype.$api = api
 
+Vue.prototype.$toast = function(title, icon='none') {
+  uni.showToast({
+    title,
+    icon
+  });
+}
+
 Vue.config.productionTip = false
 
 App.mpType = 'app'

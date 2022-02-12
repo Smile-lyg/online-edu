@@ -6,6 +6,10 @@ export default {
     header: {token: "abc"},
     // 请求拦截器
     beforeRequest(options = {}) {
+      uni.showLoading({
+        title: "请求中...",
+        mask: true
+      })
       return new Promise((resolve, reject) => {
         options.url = this.baseUrl + options.url
         options.method = options.method || "GET"
@@ -16,6 +20,7 @@ export default {
     },
     // 响应拦截器
     handleResponse([err, res]) {
+      uni.hideLoading()
       return new Promise((resolve, reject) => {
         // 请求失败或者错误
         if(res.statusCode != 200 || res.data.code != 200) {
