@@ -2,7 +2,7 @@ export default {
   namespaced: true,
   
   state: () => ({
-    userInfo: JSON.parse(uni.getStorageSync('userInfo') || '{}'),
+    userInfo: uni.getStorageSync('userInfo') || {},
     token: uni.getStorageSync('token') || ''
   }),
   mutations: {
@@ -11,7 +11,7 @@ export default {
       this.commit('user/saveUser')
     },
     saveUser(state){
-      uni.setStorageSync('userInfo', JSON.stringify(state.userInfo))
+      uni.setStorageSync('userInfo', state.userInfo)
     },
     updateToken(state, tk){
       state.token = tk
