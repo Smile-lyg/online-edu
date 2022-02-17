@@ -57,7 +57,7 @@
     },
     "h5" : {
         "router" : {
-            "base" : "/online-edu/"
+            "base" : "./"
         }
     }
 }
