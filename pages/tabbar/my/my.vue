@@ -33,7 +33,7 @@
      <!-- 列表 -->
      <view class="px-3">
        <uni-list :border="false">
-         <uni-list-item title="我的优惠券" clickable showArrow>
+         <uni-list-item title="我的优惠券" clickable showArrow @click="authJump('/pages/my-coupon/my-coupon')">
            <text slot="header" class="iconfont icon-shouye font-4 mr-2" style="color: #4396ec;"></text>
          </uni-list-item>
          

@@ -18,6 +18,23 @@ Vue.prototype.navigateTo = function(url) {
     url
   })
 }
+// 前台验证登录状态后跳转
+Vue.prototype.authJump = function(url) {
+  if(!store.state.user.token) {
+    uni.showToast({
+      title:'请登录后再访问',
+      icon: 'none'
+    })
+    return setTimeout(()=>{
+      uni.navigateTo({
+        url: "/pages/login/login"
+      })
+    }, 1500)
+  }
+  uni.navigateTo({
+    url
+  })
+}
 Vue.config.productionTip = false
 
 App.mpType = 'app'

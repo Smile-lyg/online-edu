@@ -3,7 +3,7 @@ export default {
   
   state: () => ({
     userInfo: uni.getStorageSync('userInfo') || null,
-    token: uni.getStorageSync('token') || ''
+    token: uni.getStorageSync('token') || null
   }),
   mutations: {
     updateUser(state, u){
@@ -24,7 +24,7 @@ export default {
   actions: {
     logout({ state, commit }){
       commit('updateUser', null)
-      commit('updateToken', '')
+      commit('updateToken', null)
     }
   }
 }
