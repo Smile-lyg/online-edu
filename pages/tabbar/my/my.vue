@@ -80,9 +80,12 @@
     created() {
 
     },
+    onNavigationBarButtonTap() {
+      this.navigateTo('/pages/setting/setting')
+    },
     methods: {
       openLogin() {
-        this.navigateTo('../../login/login')
+        this.navigateTo('/pages/login/login')
       }
     }
   }

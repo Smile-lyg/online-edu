@@ -22,6 +22,9 @@ export default {
     }
   },
   actions: {
-    
+    logout({ state, commit }){
+      commit('updateUser', null)
+      commit('updateToken', '')
+    }
   }
 }
