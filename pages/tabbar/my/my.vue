@@ -61,7 +61,7 @@
       return {
         icons: [{
           icon: "icon-shouye",
-          name: "文字"
+          name: "订单"
         },{
           icon: "icon-shouye",
           name: "订单"

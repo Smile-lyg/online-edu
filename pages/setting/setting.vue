@@ -1,11 +1,11 @@
 <template>
   <view>
     <uni-list :border="false">
-      <uni-list-item :border="false" title="账户安全" showArrow></uni-list-item>
-      <uni-list-item :border="false" title="清除缓存">
+      <uni-list-item clickable :border="false" title="账户安全" showArrow @click="authJump('/pages/login/user-safe')"></uni-list-item>
+      <uni-list-item clickable :border="false" title="清除缓存">
         <text slot="footer">1.2M</text>
       </uni-list-item>
-      <uni-list-item :border="false" title="检查更新" showArrow></uni-list-item>
+      <uni-list-item clickable :border="false" title="检查更新" showArrow></uni-list-item>
       <uni-list-item :border="false" title="当前版本" >
         <text slot="footer">1.0.0</text>
       </uni-list-item>

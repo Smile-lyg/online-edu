@@ -18,7 +18,7 @@ Vue.prototype.navigateTo = function(url) {
     url
   })
 }
-// 前台验证登录状态后跳转
+// 页面访问权限验证
 Vue.prototype.authJump = function(url) {
   if(!store.state.user.token) {
     uni.showToast({
