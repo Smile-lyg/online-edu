@@ -29,7 +29,7 @@ Vue.prototype.authJump = function(url) {
       uni.navigateTo({
         url: "/pages/login/login"
       })
-    }, 1500)
+    }, 800)
   }
   uni.navigateTo({
     url

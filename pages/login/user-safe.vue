@@ -44,7 +44,7 @@
           })
           // 退出登录
           this.$store.dispatch("user/logout")
-        }, 1000)
+        }, 600)
       }
     }
   }
