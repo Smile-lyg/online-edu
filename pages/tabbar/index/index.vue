@@ -1,5 +1,5 @@
 <template>
-	<view class="container">
+	<view class="container animate__animated animate__fadeIn animate__faster">
     
     <!-- 搜索栏 -->
 		<my-search-bar></my-search-bar>

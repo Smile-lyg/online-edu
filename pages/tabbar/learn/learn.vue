@@ -1,5 +1,5 @@
 <template>
-  <view>
+  <view class="animate__animated animate__fadeInRight animate__faster">
     学习
   </view>
 </template>
