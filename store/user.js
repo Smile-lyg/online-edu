@@ -2,7 +2,7 @@ export default {
   namespaced: true,
   
   state: () => ({
-    userInfo: uni.getStorageSync('userInfo') || {},
+    userInfo: uni.getStorageSync('userInfo') || null,
     token: uni.getStorageSync('token') || ''
   }),
   mutations: {

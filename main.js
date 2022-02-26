@@ -13,7 +13,11 @@ Vue.prototype.$toast = function(title, icon='none') {
     icon
   });
 }
-
+Vue.prototype.navigateTo = function(url) {
+  uni.navigateTo({
+    url
+  })
+}
 Vue.config.productionTip = false
 
 App.mpType = 'app'

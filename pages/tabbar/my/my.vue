@@ -4,13 +4,27 @@
    </view>
    
    <view class="position-relative">
-     <view class="flex p-3">
+     <!-- 未登录 -->
+     <view class="flex p-3" @click="openLogin()" v-if="!userInfo">
        <image src="/static/logo.png" mode="" style="width: 120rpx;height: 120rpx;" class="round-circle bg-light"></image>
        
        <view class="flex flex-column pl-3 flex-1 text-white">
          <view class="font-md mb-2">立即登录</view>
          <view class="font-sm">登录解锁更多功能</view>
        </view>
+     </view>
+    <!-- 已登录 -->
+     <view class="flex align-center p-3" v-else>
+       <image :src="userInfo.avatar" mode="" style="width: 120rpx;height: 120rpx;" class="round-circle bg-light"></image>
+       
+       <view class="flex flex-column pl-3 flex-1 text-white">
+         <!-- 昵称 - 用户名 - 手机号 -->
+         <view class="font-md mb-2">{{ userInfo.nickname || userInfo.username || userInfo.phone}}</view>
+         <view class="font-sm">{{ userInfo.desc || "暂无描述"}}</view>
+       </view>
+       
+       <uni-icons type="info" size="26" color="#fff" ></uni-icons>
+
      </view>
    
    <!-- 图标列表 -->
@@ -19,23 +33,24 @@
      <!-- 列表 -->
      <view class="px-3">
        <uni-list :border="false">
-         <uni-list-item title="我的优惠券" showArrow>
+         <uni-list-item title="我的优惠券" clickable showArrow>
            <text slot="header" class="iconfont icon-shouye font-4 mr-2" style="color: #4396ec;"></text>
          </uni-list-item>
          
-         <uni-list-item title="常见问题" showArrow>
+         <uni-list-item title="常见问题" clickable showArrow>
            <text slot="header" class="iconfont icon-shouye font-4 mr-2" style="color: #4396ec;"></text>
          </uni-list-item>
          
-         <uni-list-item title="设置" showArrow>
+         <uni-list-item title="设置" clickable showArrow @click="navigateTo('/pages/setting/setting')">
            <text slot="header" class="iconfont icon-shouye font-4 mr-2" style="color: #4396ec;"></text>
          </uni-list-item>
-         
+          
        </uni-list>
      </view>
      
+     
    </view>
-    <!-- <button type="primary" @tap="openLogin">登录页面</button> -->
+
   </view>
 </template>
 
@@ -67,9 +82,7 @@
     },
     methods: {
       openLogin() {
-        uni.navigateTo({
-          url: '../../login/login'
-        })
+        this.navigateTo('../../login/login')
       }
     }
   }
