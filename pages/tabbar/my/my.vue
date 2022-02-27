@@ -14,7 +14,7 @@
        </view>
      </view>
     <!-- 已登录 -->
-     <view class="flex align-center p-3" v-else>
+     <view class="flex align-center p-3" v-else @click="authJump('/pages/user-info/user-info')">
        <image :src="userInfo.avatar" mode="" style="width: 120rpx;height: 120rpx;" class="round-circle bg-light"></image>
        
        <view class="flex flex-column pl-3 flex-1 text-white">
