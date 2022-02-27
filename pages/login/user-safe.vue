@@ -36,7 +36,7 @@
         let data = Object.assign(this.form, {})
         console.log(data);
         // ...
-        this.$toast('修改成功')
+        this.$toast('修改成功，请重新登录')
         setTimeout(() => {
           // 返回上一页
           uni.navigateBack({

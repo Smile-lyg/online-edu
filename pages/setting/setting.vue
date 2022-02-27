@@ -2,8 +2,8 @@
   <view>
     <uni-list :border="false">
       <uni-list-item clickable :border="false" title="账户安全" showArrow @click="authJump('/pages/login/user-safe')"></uni-list-item>
-      <uni-list-item clickable :border="false" title="清除缓存">
-        <text slot="footer">1.2M</text>
+      <uni-list-item clickable :border="false" title="清除缓存" @click="clearSize">
+        <text slot="footer">{{currentSize | formatCurSize}}</text>
       </uni-list-item>
       <uni-list-item clickable :border="false" title="检查更新" showArrow></uni-list-item>
       <uni-list-item :border="false" title="当前版本" >
@@ -19,14 +19,24 @@
 
 <script>
   import {mapState} from 'vuex';
+  import tools from '@/common/tools.js'
   export default {
     computed: {
       ...mapState('user', ['userInfo'])
     },
     data() {
       return {
-        
+        currentSize: 0,
+        keys: []
       }
+    },
+    filters: {
+      formatCurSize(value) {
+        return tools.bytesToSize(value);
+      }
+    },
+    created() {
+        this.getSize()
     },
     methods: {
       handleLoginOut(){
@@ -41,7 +51,37 @@
             })
           }
         });
-      }
+      },
+      getSize(){
+        // 获取本地存储相关信息
+        uni.getStorageInfo({
+            success: (res) => {
+                // console.log(res.keys);
+                // console.log(res.currentSize);
+                // console.log(res.limitSize);
+                this.currentSize = res.currentSize
+                // 过滤出除了userInfo以外的内容
+                this.keys = res.keys.filter( k => k != 'userInfo')
+                // console.log(this.keys);
+            }
+        });  
+      },
+      clearSize(){
+        uni.showModal({
+          content: '是否要清除缓存',
+          success: (res) => {
+            if (res.cancel) {
+              return
+            } 
+            
+            this.keys.forEach(k => {
+              uni.removeStorageSync(k)
+            })
+            this.$toast('清除缓存成功')
+            this.getSize()
+          }
+        });
+      },
     }
   }
 </script>
