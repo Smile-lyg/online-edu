@@ -1,7 +1,7 @@
 <template>
   <view>
     <uni-list :border="false">
-      <uni-list-item clickable :border="false" title="头像" @click="authJump('/pages/login/user-safe')">
+      <uni-list-item clickable :border="false" title="头像" @click="changeAvatar">
         <image slot="footer" :src="userInfo.avatar" mode="" style="width: 80rpx;height: 80rpx;" class="round-circle bg-light"></image>
       </uni-list-item>
       <uni-list-item clickable :border="false" title="昵称">
@@ -46,7 +46,20 @@
             this.form.sex = sexList[res.tapIndex]
           }
         });
-      }
+      },
+      changeAvatar(){
+        uni.chooseImage({
+          count:1,
+          success: (res) => {
+            // ["blob:http://localhost:8080/5a688e68-5214-46d1-a762-f783cc2a4fbf"]
+            console.log(res.tempFilePaths[0]);
+            this.$api.upload(res.tempFilePaths[0], (progress) => {
+              console.log('上传进度', progress);
+            }).then(res => {console.log(res);})
+          }
+        })
+        
+      },
     },
   }
 </script>

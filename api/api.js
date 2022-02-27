@@ -26,4 +26,8 @@ export default {
    getForgetPsw(data={}) {
      return http.post('/forget', data)
    },
+   // 上传图片
+   upload(filePath, onProgress = null){
+     return http.upload('/upload', {filePath}, {onProgress})
+   }
 }
