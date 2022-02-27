@@ -2,10 +2,10 @@
   <view>
     <uni-list :border="false">
       <uni-list-item clickable :border="false" title="头像" @click="changeAvatar">
-        <image slot="footer" :src="userInfo.avatar" mode="" style="width: 80rpx;height: 80rpx;" class="round-circle bg-light"></image>
+        <image slot="footer" :src="form.avatar" mode="" style="width: 80rpx;height: 80rpx;" class="round-circle bg-light"></image>
       </uni-list-item>
       <uni-list-item clickable :border="false" title="昵称">
-        <input slot="footer" type="text" placeholder="未填写" style="text-align: right;"/>
+        <input slot="footer" v-model="form.nickname" type="text" placeholder="未填写" style="text-align: right;"/>
       </uni-list-item>
       <uni-list-item clickable :border="false" title="性别" @click="changeSex">
         <text slot="footer">{{form.sex}}</text>
@@ -16,7 +16,7 @@
     </uni-list>
     
     <view class="p-3" >
-      <main-button @click="">保存</main-button>
+      <main-button @click="submit">保存</main-button>
       </view>
     </view>
   </view>
@@ -32,8 +32,16 @@
       return {
         form: {
           sex: '未知',
-          nkname: ''
+          nickname: '',
+          avatar: 'https://bjetxgzv.cdn.bspapp.com/VKCEYUGU-uni-app-doc/44f8d690-4f3d-11eb-b680-7980c8a877b8.svg'
         }
+      }
+    },
+    created() {
+      this.form = {
+        avatar: this.userInfo.avatar,
+        nickname: this.userInfo.nickname,
+        sex: this.userInfo.sex
       }
     },
     methods: {
@@ -59,6 +67,14 @@
           }
         })
         
+      },
+      submit(){
+        let data = Object.assign(this.form, {})
+        console.log(data);
+        
+        this.$store.commit('user/updateInfo', data)
+        console.log(this.userInfo);
+        this.$toast('保存成功')
       },
     },
   }
