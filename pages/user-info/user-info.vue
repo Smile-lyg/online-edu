@@ -59,11 +59,14 @@
         uni.chooseImage({
           count:1,
           success: (res) => {
-            // ["blob:http://localhost:8080/5a688e68-5214-46d1-a762-f783cc2a4fbf"]
+            // res.tempFilePaths --> ["blob:http://localhost:8080/5a688e68-5214-46d1-a762-f783cc2a4fbf"]
             console.log(res.tempFilePaths[0]);
+            this.form.avatar = res.tempFilePaths[0]
             this.$api.upload(res.tempFilePaths[0], (progress) => {
               console.log('上传进度', progress);
-            }).then(res => {console.log(res);})
+            }).then(res => {
+             console.log(res);
+            })
           }
         })
         

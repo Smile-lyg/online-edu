@@ -61,16 +61,20 @@
       return {
         icons: [{
           icon: "icon-shouye",
-          name: "订单"
+          name: "订单",
+          path: "/pages/order-list/order-list"
         },{
           icon: "icon-shouye",
-          name: "订单"
+          name: "订单",
+          path: "/pages/order-list/order-list"
         },{
           icon: "icon-shouye",
-          name: "订单"
+          name: "订单",
+          path: "/pages/order-list/order-list"
         },{
           icon: "icon-shouye",
-          name: "订单"
+          name: "订单",
+          path: "/pages/order-list/order-list"
         }]
       };
     },
