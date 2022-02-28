@@ -60,8 +60,9 @@
                 // console.log(res.currentSize);
                 // console.log(res.limitSize);
                 this.currentSize = res.currentSize
-                // 过滤出除了userInfo以外的内容
-                this.keys = res.keys.filter( k => k != 'userInfo')
+                this.keys = res.keys
+                // 过滤出除了userInfo以外的内容，保存登录态
+                // this.keys = res.keys.filter( k => k != 'userInfo')
                 // console.log(this.keys);
             }
         });  
