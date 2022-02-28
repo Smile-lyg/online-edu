@@ -29,5 +29,9 @@ export default {
    // 上传图片
    upload(filePath, onProgress = null){
      return http.upload('/upload', {filePath}, {onProgress})
+   },
+   // 获取列表数据
+   getList(params = {}) {
+     return http.get('/getList', params)
    }
 }
