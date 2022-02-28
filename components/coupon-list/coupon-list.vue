@@ -36,6 +36,7 @@
     },
     methods: {
       getCoupon(item) {
+        
         if(item.isget) return this.$toast('您已经领取过了')
         item.isget = true
         this.$toast('领取成功')

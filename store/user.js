@@ -31,6 +31,7 @@ export default {
     logout({ state, commit }){
       commit('updateUser', null)
       commit('updateToken', null)
+      uni.$emit('userLogout')
     }
   }
 }

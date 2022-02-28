@@ -85,6 +85,18 @@
           src:'/static/banner/b2.jpg'
         }]
       }, 2000)
+      
+      uni.$on('userLogin', (u)=>{
+        console.log('用户登录', u);
+      })
+      uni.$on('userLogout', ()=>{
+        console.log('用户退出登录');
+      })
+    },
+    destroyed() {
+      // 注销全局事件
+      uni.$off('userLogin')
+      uni.$off('userLogout')
     },
 		methods: {
        getData(){

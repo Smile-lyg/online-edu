@@ -107,6 +107,7 @@
           this.$toast('登录成功！')
           this.$store.commit('user/updateUser', res.data)
           this.$store.commit('user/updateToken', res.data.token)
+          uni.$emit('userLogin', res.data)
           // 如果手机号为null，跳转绑定手机页面
           if(!res.data.phone){
             uni.redirectTo({
