@@ -1,5 +1,5 @@
 <template>
-  <view class="p-2">
+  <view class="p-2" @click="open">
     <view class="search-box flex justify-center align-center py-2">
       <uni-icons type="search" color="#928e8a" size="20"></uni-icons>
       <text class="ml-2">请输入搜索内容</text>
@@ -14,7 +14,12 @@
       return {
         
       };
-    }
+    },
+    methods: {
+      open() {
+        this.navigateTo('/pages/search/search')
+      }
+    },
   }
 </script>
 
