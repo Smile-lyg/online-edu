@@ -37,15 +37,10 @@
         type: String,
         default: "two"
       },
-    },
-    filters: {
-      formatType(k) {
-        return opt[k]
-      }
-    },
-    data() {
-      return {
-        groupList:[{
+      groupList: {
+        type: Array,
+        default: function (){
+          return [{
           id: 10,
           goods_id: 12,
           title: "uni-app实战直播app开发",
@@ -70,6 +65,17 @@
           t_price: "99.00",
           type: "audio"
         }]
+        }
+      }
+    },
+    filters: {
+      formatType(k) {
+        return opt[k]
+      }
+    },
+    data() {
+      return {
+        
       }
     }
   }
@@ -117,5 +123,9 @@
   bottom: 10rpx;
   background-color: rgba(0,0,0,0.4);
   padding: 0 10rpx;
+}
+.course-one>view:last-child {
+  // background-color: #007AFF;
+  width: 400rpx;
 }
 </style>

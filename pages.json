@@ -137,6 +137,26 @@
             }
             
         }
+        ,{
+            "path" : "pages/search-result/search-result",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+                "app-plus":{
+                  "titleNView":{
+                    "searchInput": {
+                      "align":"left",
+                      "backgroundColor":"#f69f8",
+                      "borderRadius":"50px",
+                      "placeholder":"输入搜索关键词",
+                      "disabled": true
+                    }
+                  }
+                }
+            }
+            
+        }
     ],
   "globalStyle": {
     "navigationBarTextStyle": "black",

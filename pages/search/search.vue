@@ -7,7 +7,7 @@
       </view>
       
       <view class="flex flex-wrap pl-2">
-        <view class="history p-0 mr-2 mb-2" v-for="(item, index) in list" :key="index">{{item}}</view>
+        <view class="history p-0 mr-2 mb-2" @click="handleSearch(item)" v-for="(item, index) in list" :key="index">{{item}}</view>
       </view>
     </view>
   </view>
@@ -40,9 +40,16 @@
       }
     },
     methods: {
-      handleSearch(){
+      handleSearch(value=''){
+        // 即点击历史记录搜索项目，传值
+        if(value){
+          this.keyword = value
+        }
         if(this.keyword == '') return this.$toast('请输入关键词')
         // 跳转搜索结果页
+        uni.navigateTo({
+          url: "/pages/search-result/search-result?keyword=" + this.keyword
+        })
         // 加入到历史记录
         this.addHistory()
       },
