@@ -8,12 +8,17 @@
       
       <view class="flex flex-column flex-shrink-0 font-md">
         <text class="text-ellipsis course-title">{{item.title}}</text>
-        <view class="font-sm text-muted py-1">10人已抢</view>
+        
+        <view class="font-sm text-muted py-1">
+          <slot name="desc">10人已抢</slot>
+        </view>
         <view class="flex align-end">
-          <text class=" text-danger">￥{{item.t_price}}</text>
-          <text class="font-sm text-muted" style="text-decoration: line-through; line-height: 40rpx;">
-            ￥{{item.price}}
-          </text>
+          <slot name="progress">
+            <text class=" text-danger">￥{{item.t_price}}</text>
+            <text class="font-sm text-muted" style="text-decoration: line-through; line-height: 40rpx;">
+              ￥{{item.price}}
+            </text>
+          </slot>
         </view>
       </view>
       
